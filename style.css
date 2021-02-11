@@ -41,7 +41,7 @@
   height: 150px;
   border: 1px solid black;
   border-radius: 10px;
-  display: grid;
+  /* display: grid; */
   text-align: center;
   transition: all 0.3s ease;
 }
@@ -52,4 +52,10 @@
   border: 3px solid red; */
   box-shadow: inset 0 0 0 23px #53ea93;
   align-items: center;
+}
+
+.addToBasket {
+  height: 30px;
+  width: 100px;
+  /* display: block; */
 }
