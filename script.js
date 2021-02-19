@@ -9,14 +9,17 @@
 
 let itemsList = document.querySelector(".goods-list"); // объявляем переменную и присваиваем блок куда будем рендерить товары, чтобы повторно не вызывать querySelector
 
+const API_URL = "https://jsonplaceholder.typicode.com/users";
+
 class GoodsItem {
   // класс одного товара и его рендер
-  constructor(title, price) {
-    this.title = title;
-    this.price = price;
+  constructor(name, username) {
+    this.name = name;
+    this.username = username;
   }
+
   render() {
-    return `<div class="goods-item"><h3>${this.title}</h3><p>${this.price}</p><input type='button' class='addToBasket' value='Click to basket'></div>`;
+    return `<div class="goods-item"><h3>${this.name}</h3><p>${this.username}</p><input type='button' class='addToBasket' value='Click to basket'></div>`;
   }
 }
 
@@ -25,20 +28,36 @@ class GoodsList {
   constructor() {
     this.goods = [];
   }
-  fetch() {
-    this.goods = [
-      { title: "Shirt", price: 150 },
-      { title: "Socks", price: 50 },
-      { title: "Jacket", price: 350 },
-      { title: "Shoes", price: 250 },
-      { price: 250 },
-      { title: "Shoes" },
-    ];
+  // fetch() {
+  //   this.goods = [
+  //     { title: "Shirt", price: 150 },
+  //     { title: "Socks", price: 50 },
+  //     { title: "Jacket", price: 350 },
+  //     { title: "Shoes", price: 250 },
+  //     { price: 250 },
+  //     { title: "Shoes" },
+  //   ];
+  // }
+
+  fetchGoods(url) {
+    return fetch(url)
+      .then((r) => {
+        let data = r.json();
+        return data;
+      })
+      .then((data) => {
+        this.goods = data.map((item) => {
+          item.name, item.username;
+        });
+      });
+    // this.goods = data.map((item) => {
+    //   item.product_name, item.price;
   }
+
   render() {
     let listHtml = "";
     this.goods.forEach((item) => {
-      const goodItem = new GoodsItem(item.title, item.price);
+      const goodItem = new GoodsItem(item.name, item.username);
       listHtml += goodItem.render();
     });
     itemsList.innerHTML = listHtml;
@@ -61,6 +80,8 @@ class Basket {
     this.totalPrice = "";
     this.amountItems = "";
   }
+  addToBasket() {}
+
   countPrice() {
     // метод подсчитывающий сумму корзины
     let count = "";
@@ -100,6 +121,6 @@ class basketItem extends GoodsItem {
 
 // renderGoodsList(goods);
 const newList = new GoodsList();
-newList.fetch();
+newList.fetchGoods(API_URL);
 newList.render();
-newList.countPrice();
+// newList.countPrice();
