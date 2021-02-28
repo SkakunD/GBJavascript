@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <!-- <script src="gamburg.js"></script> -->
+    <title>Shop</title>
+  </head>
+  <body>
+    <header>
+      <div class="header">
+        <div class="header-name">The fantastic shop</div>
+        <div class="header-btn">
+          <button class="cart-button" type="button">Корзина</button>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div id="root">
+        <!-- <h3>{{message}}</h3>
+        
+        <hr />
+        <input type="text" v-model="message" placeholder="Enter new value" />
+        <button v-if="notEmpty">Press to continue</button>
+        <div v-if="message.trim().length == 0">Input new message</div>
+        
+        <div class="goods-list">
+          <div
+            class="goods-item"
+            v-for="list in listItems"
+            v-on:click="handleClick(list.id)"
+          >
+            <h2>{{list.productName}}</h2>
+            <h5>{{list.price}}</h5>
+            <hr />
+            <button id="{list.id}">Add to cart</button>
+          </div>
+        </div> -->
+        <div class="goods-list" if="cart.length == 0">
+          <div v-for="cartItem in cart">
+            <h4>{{cartItem.productName}}</h4>
+            <h5>{{cartItem.price}}</h5>
+            <!-- <span>count = </span> -->
+            <hr />
+          </div>
+          <!-- <button @click="addToBasket(item.id)">Add to cart🛒</button> -->
+        </div>
+        <input type="search" placeholder="Search" v-model="searchGoods" />
+        <div class="goods-list">
+          <div class="goods-item" v-for="item in filteredGoods">
+            <h2>{{item.productName}}</h2>
+            <h5>{{item.price}}</h5>
+            <hr />
+            <button @click="addToBasket(item.id)">Add to cart🛒</button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="script5.js"></script>
+  </body>
+</html>
