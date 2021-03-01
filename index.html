@@ -21,33 +21,16 @@
     </header>
     <main>
       <div id="root">
-        <!-- <h3>{{message}}</h3>
-        
-        <hr />
-        <input type="text" v-model="message" placeholder="Enter new value" />
-        <button v-if="notEmpty">Press to continue</button>
-        <div v-if="message.trim().length == 0">Input new message</div>
-        
-        <div class="goods-list">
-          <div
-            class="goods-item"
-            v-for="list in listItems"
-            v-on:click="handleClick(list.id)"
-          >
-            <h2>{{list.productName}}</h2>
-            <h5>{{list.price}}</h5>
-            <hr />
-            <button id="{list.id}">Add to cart</button>
-          </div>
-        </div> -->
-        <div class="goods-list" if="cart.length == 0">
+        <cart :cart="cart"></cart>
+        <good-list :goods="filteredGoods" :addCart="addToBasket"></good-list>
+        <!-- <some-id></some-id> -->
+        <!-- <some :name="name"></some> -->
+        <!-- <div class="goods-list" if="cart.length == 0">
           <div v-for="cartItem in cart">
             <h4>{{cartItem.productName}}</h4>
             <h5>{{cartItem.price}}</h5>
-            <!-- <span>count = </span> -->
             <hr />
           </div>
-          <!-- <button @click="addToBasket(item.id)">Add to cart🛒</button> -->
         </div>
         <input type="search" placeholder="Search" v-model="searchGoods" />
         <div class="goods-list">
@@ -57,9 +40,9 @@
             <hr />
             <button @click="addToBasket(item.id)">Add to cart🛒</button>
           </div>
-        </div>
+        </div> -->
       </div>
     </main>
-    <script src="script5.js"></script>
+    <script src="script6.js"></script>
   </body>
 </html>
